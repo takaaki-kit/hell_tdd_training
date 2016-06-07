@@ -1,16 +1,12 @@
+
 <?php
 
-require('Menu.php');
-require('StdinStub.php');
-require('StdoutSpy.php');
+require('FizzBuzz.php');
 
-class FizzbuzzTest extends PHPUnit_Framework_TestCase
+class FizzBuzzTest extends PHPUnit_Framework_TestCase
 {
-  public function test１が選ばれたらfizzbuzzをスタートする()
+  public function test１５を入力したらfizzbuzzが帰ってくる()
   {
-    $stub = new StdinStub(15);
-    $spy = new StdoutSpy();
-    (new Menu($spy,$stub))->select(1);
-    $this->assertEquals('FizzBuzz',$spy->result());
+    $this->assertEquals('FizzBuzz',(new FizzBuzz(15))->start());
   }
 }

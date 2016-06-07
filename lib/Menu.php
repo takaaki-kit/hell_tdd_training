@@ -2,12 +2,15 @@
 
 class Menu
 {
+  public function __construct($out,$in)
+  {
+    $this->in = $in;
+    $this->out = $out;
+  }
 
   public function select($mode)
   {
-  #  if ($value == 1) {
-  #    $input = $this->in->get();
-  #    if($input  === 15){$this->out->print("FizzBuzz");}
-  #  }
+      $input = $this->in->get();
+      $this->out->unko((new FizzBuzz($input))->start);
   }
 }
