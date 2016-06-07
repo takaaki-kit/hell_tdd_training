@@ -1,5 +1,7 @@
 <?php
 
+require_once('FizzBuzz.php');
+
 class Menu
 {
   public function __construct($out,$in)
@@ -11,6 +13,6 @@ class Menu
   public function select($mode)
   {
       $input = $this->in->get();
-      $this->out->unko((new FizzBuzz($input))->start);
+      $this->out->unko((new FizzBuzz($input))->start());
   }
 }
