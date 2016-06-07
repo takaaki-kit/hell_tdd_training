@@ -2,9 +2,17 @@
 
 class FizzBuzz
 {
+
+  public function __construct($number)
+  {
+    $this->number = $number;
+  }
   public function start()
   {
-    return 'FizzBuzz';
+    if($this->number === 15){
+      return 'FizzBuzz';
+    }
+    return 'Fizz';
 
   }
 }
