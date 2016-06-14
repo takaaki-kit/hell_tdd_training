@@ -24,7 +24,7 @@ class FizzBuzz
     if($this->number % 5 === 0){
       return 'Buzz';
     }
-    return '1';
+    return strval($this->number);
 
   }
 }
