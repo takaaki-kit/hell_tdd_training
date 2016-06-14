@@ -33,4 +33,8 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
   {
     $this->assertEquals('1',(new FizzBuzz(1))->start());
   }
+  public function test0を入力したら0が帰ってくる()
+  {
+    $this->assertEquals('0',(new FizzBuzz(0))->start());
+  }
 }

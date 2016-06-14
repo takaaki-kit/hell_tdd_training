@@ -9,6 +9,10 @@ class FizzBuzz
   }
   public function start()
   {
+
+    if($this->number === 0){
+      return '0';
+    }
     if($this->number % 15 === 0){
       return 'FizzBuzz';
     }
