@@ -9,22 +9,19 @@ class FizzBuzz
   }
   public function start()
   {
+    if($this->number != 0){
+      if($this->number % 15 === 0){
+        return 'FizzBuzz';
+      }
 
-    if($this->number === 0){
-      return '0';
-    }
-    if($this->number % 15 === 0){
-      return 'FizzBuzz';
-    }
+      if($this->number % 3 === 0){
+        return 'Fizz';
+      }
 
-    if($this->number % 3 === 0){
-      return 'Fizz';
-    }
-
-    if($this->number % 5 === 0){
-      return 'Buzz';
+      if($this->number % 5 === 0){
+        return 'Buzz';
+      }
     }
     return strval($this->number);
-
   }
 }
