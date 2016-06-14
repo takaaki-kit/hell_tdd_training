@@ -17,4 +17,8 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
   {
     $this->assertEquals('Buzz',(new FizzBuzz(5))->start());
   }
+  public function test30を入力したらfizzbuzzが帰ってくる()
+  {
+    $this->assertEquals('FizzBuzz',(new FizzBuzz(30))->start());
+  }
 }
