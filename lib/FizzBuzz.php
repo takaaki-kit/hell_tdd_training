@@ -16,7 +16,11 @@ class FizzBuzz
     if($this->number % 3 === 0){
       return 'Fizz';
     }
-    return 'Buzz';
+
+    if($this->number % 5 === 0){
+      return 'Buzz';
+    }
+    return '1';
 
   }
 }
