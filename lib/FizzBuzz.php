@@ -12,7 +12,11 @@ class FizzBuzz
     if($this->number === 15){
       return 'FizzBuzz';
     }
-    return 'Fizz';
+
+    if($this->number === 3){
+      return 'Fizz';
+    }
+    return 'Buzz';
 
   }
 }
