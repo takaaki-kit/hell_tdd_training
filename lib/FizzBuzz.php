@@ -9,19 +9,24 @@ class FizzBuzz
   }
   public function start()
   {
-    if($this->number != 0){
-      if($this->number % 15 === 0){
+    if(!($this->number === 0)){
+      if($this->isMultipleOf(15)){
         return 'FizzBuzz';
       }
 
-      if($this->number % 3 === 0){
+      if($this->isMultipleOf(3)){
         return 'Fizz';
       }
 
-      if($this->number % 5 === 0){
+      if($this->isMultipleOf(5)){
         return 'Buzz';
       }
     }
     return strval($this->number);
+  }
+
+  private function isMultipleOf($number)
+  {
+   return $this->number % $number === 0;
   }
 }
