@@ -13,7 +13,7 @@ class FizzBuzz
       return 'FizzBuzz';
     }
 
-    if($this->number === 3){
+    if($this->number % 3 === 0){
       return 'Fizz';
     }
     return 'Buzz';
