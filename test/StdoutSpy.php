@@ -8,7 +8,7 @@ class StdoutSpy
     return $this->str;
   }
 
-  public function unko($str)
+  public function puts($str)
   {
     $this->str = $str;
   }

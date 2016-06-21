@@ -13,6 +13,6 @@ class Menu
   public function select($mode)
   {
       $input = $this->in->get();
-      $this->out->unko((new FizzBuzz($input))->start());
+      $this->out->puts((new FizzBuzz($input))->start());
   }
 }
