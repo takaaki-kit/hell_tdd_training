@@ -12,7 +12,9 @@ class Menu
 
   public function select($mode)
   {
+    if($mode === '1'){
       $input = $this->in->get();
-      $this->out->puts((new FizzBuzz($input))->start());
+      $this->out->puts((new FizzBuzz(intval($input)))->start());
+    }
   }
 }
