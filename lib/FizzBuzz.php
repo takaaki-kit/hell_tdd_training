@@ -9,7 +9,7 @@ class FizzBuzz
   }
   public function start()
   {
-    if(!($this->isMultipleOfAll())){
+    if(!$this->isMultipleOfAll()){
       if($this->isMultipleOf(15)){
         return 'FizzBuzz';
       }
