@@ -9,10 +9,10 @@ class IntegerValidator
 
     public function isInteger()
     {
-        if($this->number === 'a')
+        if(preg_match("/^[0-9]+$/",$this->number))
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
