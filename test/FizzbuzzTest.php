@@ -37,5 +37,8 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     $this->assertEquals('2',(new FizzBuzz(2))->start(),'fail at 2');
   }
 
-
+  public function test自分自身の文字列を返す()
+  {
+    $this->assertEquals('3 Fizz',(new FizzBuzz(3))->toString());
+  }
 }

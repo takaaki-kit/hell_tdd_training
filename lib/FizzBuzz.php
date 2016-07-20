@@ -24,6 +24,11 @@ class FizzBuzz
     }
     return strval($this->number);
   }
+  
+  public function toString()
+  {
+      return "$this->number {$this->start()}"; 
+  }
 
   private function isMultipleOfAll()
   {
@@ -34,4 +39,5 @@ class FizzBuzz
   {
    return $this->number % $number === 0;
   }
+
 }

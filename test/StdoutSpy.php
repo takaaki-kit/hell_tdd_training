@@ -2,14 +2,15 @@
 
 class StdoutSpy
 {
-  private $str = NULL;
+  private $buffers = [];
+
   public function result()
   {
-    return $this->str;
+    return $this->buffers;
   }
 
-  public function puts($str)
+  public function puts($buffer)
   {
-    $this->str = $str;
+    $this->buffers[] = $buffer;
   }
 }
