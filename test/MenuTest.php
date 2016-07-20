@@ -58,4 +58,22 @@ class MenuTest extends PHPUnit_Framework_TestCase
     $menu->select('1');
     $this->assertEquals((new Question(15))->toString(),$repository->all()[0]->toString());
   }
+
+#  public function test3が呼ばれて、これまでのfizzbuzzの結果がファイルに保存される()
+#  {
+#    $spy = new StdoutSpy();
+#
+#    $fizz = new Question(3);
+#    $buzz = new Question(5);
+#
+#    $repository = new QuestionRepository();
+#    $repository->register($fizz);
+#    $repository->register($buzz);
+#
+#    $menu = new Menu($spy,NULL,$repository);
+#    $menu->select('3');
+#
+#    $this->assertEquals($fizz->toString(), (new File('/logs/answer.txt')->read()));
+#
+#  }
 }
