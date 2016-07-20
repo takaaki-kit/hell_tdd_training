@@ -1,6 +1,6 @@
 <?php
 
-require_once('FizzBuzz.php');
+require_once('Question.php');
 require_once('IntegerValidator.php');
 
 class Menu

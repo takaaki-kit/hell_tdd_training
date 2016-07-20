@@ -1,9 +1,9 @@
 
 <?php
 
-require_once('FizzBuzz.php');
+require_once('Question.php');
 
-class FizzBuzzTest extends PHPUnit_Framework_TestCase
+class QuestionTest extends PHPUnit_Framework_TestCase
 {
   public function test0を入力したら0が帰ってくる()
   {
