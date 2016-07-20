@@ -36,17 +36,17 @@ class MenuTest extends PHPUnit_Framework_TestCase
   {
     $spy = new StdoutSpy();
 
-    $fizzbuzz1 = new Question(3);
-    $fizzbuzz2 = new Question(5);
+    $fizz = new Question(3);
+    $buzz = new Question(5);
 
     $repository = new QuestionRepository();
-    $repository->register($fizzbuzz1);
-    $repository->register($fizzbuzz2);
+    $repository->register($fizz);
+    $repository->register($buzz);
 
     $menu = new Menu($spy,NULL,$repository);
 
     $menu->select('2');
-    $this->assertEquals([$fizzbuzz1->toString(),$fizzbuzz2->toString()], $spy->result());
+    $this->assertEquals([$fizz->toString(),$buzz->toString()], $spy->result());
   }
 
   public function test1が呼ばれて結果が状態に保存される()
