@@ -1,6 +1,7 @@
 <?php
 
 require_once('Menu.php');
+require_once('QuestionRepository.php');
 
 class Stdin
 {
@@ -18,14 +19,15 @@ class Stdout
   }
 }
 
+$menu = new Menu(new Stdout(),new Stdin(), new QuestionRepository());
+
 while (true) {
   $value = trim(fgets(STDIN));
-
 
   if ($value === '0') {
     break;
   }
-  (new Menu(new Stdout(),new Stdin()))->select($value);
+  $menu->select($value);
 }
 
 
