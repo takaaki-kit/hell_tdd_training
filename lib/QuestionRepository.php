@@ -1,6 +1,6 @@
 <?php
 
-class FizzBuzzRepository
+class QuestionRepository
 {
     private $fizzbuzzes = [];
 

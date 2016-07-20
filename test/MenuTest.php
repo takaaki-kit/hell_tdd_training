@@ -3,7 +3,7 @@
 require('Menu.php');
 require('StdinStub.php');
 require('StdoutSpy.php');
-require('FizzBuzzRepository.php');
+require('QuestionRepository.php');
 
 class MenuTest extends PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
   {
     $stub = new StdinStub('15');
     $spy = new StdoutSpy();
-    (new Menu($spy,$stub,new FizzBuzzRepository()))->select('1');
+    (new Menu($spy,$stub,new QuestionRepository()))->select('1');
     $this->assertEquals(['FizzBuzz'],$spy->result());
   }
 
@@ -19,7 +19,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
   {
     $stub = new StdinStub('a');
     $spy = new StdoutSpy();
-    (new Menu($spy,$stub,new FizzBuzzRepository()))->select('1');
+    (new Menu($spy,$stub,new QuestionRepository()))->select('1');
     $this->assertEquals(['エラー'],$spy->result());
   }
 
@@ -28,7 +28,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
     $noMenuNumber = '13579';
     $stub = new StdinStub('');
     $spy = new StdoutSpy();
-    (new Menu($spy,$stub,new FizzBuzzRepository()))->select($noMenuNumber);
+    (new Menu($spy,$stub,new QuestionRepository()))->select($noMenuNumber);
     $this->assertEquals([],$spy->result());
   }
 
@@ -39,7 +39,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
     $fizzbuzz1 = new Question(3);
     $fizzbuzz2 = new Question(5);
 
-    $repository = new FizzBuzzRepository();
+    $repository = new QuestionRepository();
     $repository->register($fizzbuzz1);
     $repository->register($fizzbuzz2);
 
@@ -53,7 +53,7 @@ class MenuTest extends PHPUnit_Framework_TestCase
   {
     $stub = new StdinStub('15');
     $spy = new StdoutSpy();
-    $repository = new FizzBuzzRepository();
+    $repository = new QuestionRepository();
     $menu = new Menu($spy,$stub,$repository);
     $menu->select('1');
     $this->assertEquals((new Question(15))->toString(),$repository->all()[0]->toString());
