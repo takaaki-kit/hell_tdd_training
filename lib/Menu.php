@@ -17,7 +17,7 @@ class Menu
         if($mode === '1'){
             $input = $this->in->get();
             if((new IntegerValidator($input))->isInteger()){
-                $fizzbuzz = new FizzBuzz(intval($input));
+                $fizzbuzz = new Question(intval($input));
                 $this->out->puts($fizzbuzz->start());
                 $this->repository->register($fizzbuzz);
             }else{

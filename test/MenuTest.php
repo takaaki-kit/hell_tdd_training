@@ -36,8 +36,8 @@ class MenuTest extends PHPUnit_Framework_TestCase
   {
     $spy = new StdoutSpy();
 
-    $fizzbuzz1 = new FizzBuzz(3);
-    $fizzbuzz2 = new FizzBuzz(5);
+    $fizzbuzz1 = new Question(3);
+    $fizzbuzz2 = new Question(5);
 
     $repository = new FizzBuzzRepository();
     $repository->register($fizzbuzz1);
@@ -56,6 +56,6 @@ class MenuTest extends PHPUnit_Framework_TestCase
     $repository = new FizzBuzzRepository();
     $menu = new Menu($spy,$stub,$repository);
     $menu->select('1');
-    $this->assertEquals((new FizzBuzz(15))->toString(),$repository->all()[0]->toString());
+    $this->assertEquals((new Question(15))->toString(),$repository->all()[0]->toString());
   }
 }

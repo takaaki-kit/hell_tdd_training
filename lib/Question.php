@@ -1,6 +1,6 @@
 <?php
 
-class FizzBuzz
+class Question
 {
 
   public function __construct($number)
