@@ -19,7 +19,7 @@ class File
         $body = [];
         $fp = fopen($this->filename, "r");
         while($line = fgets($fp)){
-           $body[] = trim($line); 
+           $body[] = trim($line);
         }
         fclose($fp);
         return $body;

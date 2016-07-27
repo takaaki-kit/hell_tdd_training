@@ -14,7 +14,7 @@ class FileTest extends PHPUnit_Framework_TestCase
 
     public function testファイルの中身をすべて返す()
     {
-        $file = new File(self::FILE_PATH); 
+        $file = new File(self::FILE_PATH);
         $file->write('aho');
         $file->write('boke');
 

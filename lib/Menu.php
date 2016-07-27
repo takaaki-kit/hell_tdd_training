@@ -30,5 +30,11 @@ class Menu
                 $this->out->puts($fizzbuzz->toString());
             }
         }
+
+        if($mode === '3'){
+            foreach($this->repository->all() as $answer){
+                (new File('logs/answer.txt'))->write($answer->toString());
+            }
+        }
     }
 }
