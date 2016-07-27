@@ -1,24 +1,13 @@
 <?php
 
-require('Menu.php');
-require('StdinStub.php');
-require('StdoutSpy.php');
-require('QuestionRepository.php');
+require_once('Menu.php');
+require_once('StdinStub.php');
+require_once('StdoutSpy.php');
+require_once('QuestionRepository.php');
+require_once('Helper/base.php');
 
-class MenuTest extends PHPUnit_Framework_TestCase
+class MenuTest extends Test_Base
 {
-    const FILE_PATH = 'logs/answer.txt';
-
-    protected function setUp()
-    {
-        $this->delete_file();
-    }
-
-    protected function tearDown()
-    {
-        $this->delete_file();
-    }
-
     public function test１が選ばれて、fizzbuzzの対応する結果が帰ってくる()
     {
         $stub = new StdinStub('15');
@@ -102,12 +91,5 @@ class MenuTest extends PHPUnit_Framework_TestCase
         $menu->select('4');
 
         $this->assertEquals([$fizz->toString(), $buzz->toString()], $spy->result());
-    }
-
-    private function delete_file()
-    {
-        if(file_exists(self::FILE_PATH)){
-            unlink(self::FILE_PATH);
-        }
     }
 }

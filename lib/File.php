@@ -2,14 +2,14 @@
 
 class File
 {
-    public function __construct($filename)
+    public function __construct($filepath)
     {
-        $this->filename = $filename;
+        $this->filepath = $filepath;
     }
 
     public function write($answer)
     {
-        $fp = fopen($this->filename, "a");
+        $fp = fopen($this->filepath, "a");
         fwrite($fp, $answer . "\n");
         fclose($fp);
     }
@@ -17,10 +17,10 @@ class File
     public function read()
     {
         $body = [];
-        if(!file_exists($this->filename)){
+        if(!file_exists($this->filepath)){
             return $body;
         }
-        $fp = fopen($this->filename, "r");
+        $fp = fopen($this->filepath, "r");
         while($line = fgets($fp)){
            $body[] = trim($line);
         }
