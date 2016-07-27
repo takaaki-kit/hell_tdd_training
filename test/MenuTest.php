@@ -4,7 +4,6 @@ require('Menu.php');
 require('StdinStub.php');
 require('StdoutSpy.php');
 require('QuestionRepository.php');
-require('File.php');
 
 class MenuTest extends PHPUnit_Framework_TestCase
 {

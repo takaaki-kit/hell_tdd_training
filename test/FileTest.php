@@ -21,6 +21,13 @@ class FileTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['aho', 'boke'], $file->read());
     }
 
+    public function testファイルが存在しない時は何も出力しないこと()
+    {
+        $file = new File(self::FILE_PATH);
+
+        $this->assertEquals([], $file->read());
+    }
+
     protected function tearDown()
     {
         $this->delete_file();

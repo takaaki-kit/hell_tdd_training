@@ -17,6 +17,9 @@ class File
     public function read()
     {
         $body = [];
+        if(!file_exists($this->filename)){
+            return $body;
+        }
         $fp = fopen($this->filename, "r");
         while($line = fgets($fp)){
            $body[] = trim($line);
