@@ -53,15 +53,13 @@ class Menu
 
     private function save_history()
     {
-        foreach($this->repository->all() as $answer){
-            (new File('logs/answer.txt'))->write($answer->toString());
-        }
+        $this->repository->write();
     }
 
     private function show_file()
     {
-        foreach((new File('logs/answer.txt'))->read() as $answer){
-            $this->out->puts($answer);
+        foreach($this->repository->read() as $fizzbuzz){
+            $this->out->puts($fizzbuzz->toString());
         }
     }
 }

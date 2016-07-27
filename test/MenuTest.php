@@ -12,7 +12,7 @@ class MenuTest extends Test_Base
     {
         $stub = new StdinStub('15');
         $spy = new StdoutSpy();
-        (new Menu($spy,$stub,new QuestionRepository()))->select('1');
+        (new Menu($spy,$stub,new QuestionRepository(self::FILE_PATH)))->select('1');
         $this->assertEquals(['FizzBuzz'],$spy->result());
     }
 
@@ -20,7 +20,7 @@ class MenuTest extends Test_Base
     {
         $stub = new StdinStub('a');
         $spy = new StdoutSpy();
-        (new Menu($spy,$stub,new QuestionRepository()))->select('1');
+        (new Menu($spy,$stub,new QuestionRepository(self::FILE_PATH)))->select('1');
         $this->assertEquals(['エラー'],$spy->result());
     }
 
@@ -29,7 +29,7 @@ class MenuTest extends Test_Base
         $noMenuNumber = '13579';
         $stub = new StdinStub('');
         $spy = new StdoutSpy();
-        (new Menu($spy,$stub,new QuestionRepository()))->select($noMenuNumber);
+        (new Menu($spy,$stub,new QuestionRepository(self::FILE_PATH)))->select($noMenuNumber);
         $this->assertEquals([],$spy->result());
     }
 
@@ -40,7 +40,7 @@ class MenuTest extends Test_Base
         $fizz = new Question(3);
         $buzz = new Question(5);
 
-        $repository = new QuestionRepository();
+        $repository = new QuestionRepository(self::FILE_PATH);
         $repository->register($fizz);
         $repository->register($buzz);
 
@@ -54,7 +54,7 @@ class MenuTest extends Test_Base
     {
         $stub = new StdinStub('15');
         $spy = new StdoutSpy();
-        $repository = new QuestionRepository();
+        $repository = new QuestionRepository(self::FILE_PATH);
         $menu = new Menu($spy,$stub,$repository);
         $menu->select('1');
         $this->assertEquals((new Question(15))->toString(),$repository->all()[0]->toString());
@@ -65,14 +65,16 @@ class MenuTest extends Test_Base
         $fizz = new Question(3);
         $buzz = new Question(5);
 
-        $repository = new QuestionRepository();
+        $repository = new QuestionRepository(self::FILE_PATH);
         $repository->register($fizz);
         $repository->register($buzz);
 
         $menu = new Menu(NULL, NULL,$repository);
         $menu->select('3');
 
-        $this->assertEquals([$fizz->toString(), $buzz->toString()], ((new File(self::FILE_PATH))->read()));
+        $questions = $repository->read();
+
+        $this->assertEquals([$fizz->toString(), $buzz->toString()], [$questions[0]->toString(), $questions[1]->toString()]);
     }
 
     public function test4が呼ばれたとき、ファイルの内容を出力すること()
@@ -82,7 +84,7 @@ class MenuTest extends Test_Base
         $fizz = new Question(3);
         $buzz = new Question(5);
 
-        $repository = new QuestionRepository();
+        $repository = new QuestionRepository(self::FILE_PATH);
         $repository->register($fizz);
         $repository->register($buzz);
 

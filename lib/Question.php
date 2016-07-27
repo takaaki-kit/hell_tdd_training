@@ -30,6 +30,11 @@ class Question
       return "$this->number {$this->start()}"; 
   }
 
+  public function number()
+  {
+      return $this->number;
+  }
+
   private function isMultipleOfAll()
   {
    return $this->number === 0;
@@ -39,5 +44,4 @@ class Question
   {
    return $this->number % $number === 0;
   }
-
 }
