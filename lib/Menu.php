@@ -36,5 +36,11 @@ class Menu
                 (new File('logs/answer.txt'))->write($answer->toString());
             }
         }
+
+        if($mode === '4'){
+            foreach((new File('logs/answer.txt'))->read() as $answer){
+                $this->out->puts($answer);
+            }
+        }
     }
 }

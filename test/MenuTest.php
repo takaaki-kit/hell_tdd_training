@@ -74,6 +74,21 @@ class MenuTest extends PHPUnit_Framework_TestCase
 
     public function test3が呼ばれて、これまでのfizzbuzzの結果がファイルに保存される()
     {
+        $fizz = new Question(3);
+        $buzz = new Question(5);
+
+        $repository = new QuestionRepository();
+        $repository->register($fizz);
+        $repository->register($buzz);
+
+        $menu = new Menu(NULL, NULL,$repository);
+        $menu->select('3');
+
+        $this->assertEquals([$fizz->toString(), $buzz->toString()], ((new File(self::FILE_PATH))->read()));
+    }
+
+    public function test4が呼ばれたとき、ファイルの内容を出力すること()
+    {
         $spy = new StdoutSpy();
 
         $fizz = new Question(3);
@@ -85,8 +100,9 @@ class MenuTest extends PHPUnit_Framework_TestCase
 
         $menu = new Menu($spy,NULL,$repository);
         $menu->select('3');
+        $menu->select('4');
 
-        $this->assertEquals([$fizz->toString(), $buzz->toString()], ((new File(self::FILE_PATH))->read()));
+        $this->assertEquals([$fizz->toString(), $buzz->toString()], $spy->result());
     }
 
     private function delete_file()
