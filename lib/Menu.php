@@ -1,6 +1,5 @@
 <?php
 
-require_once('File.php');
 require_once('Question.php');
 require_once('IntegerValidator.php');
 
