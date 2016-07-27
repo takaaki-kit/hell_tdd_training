@@ -57,7 +57,7 @@ class MenuTest extends Test_Base
         $repository = new QuestionRepository(self::FILE_PATH);
         $menu = new Menu($spy,$stub,$repository);
         $menu->select('1');
-        $this->assertEquals((new Question(15))->toString(),$repository->all()[0]->toString());
+        $this->assertEquals((new Question(15))->toString(),$repository->temporary_all()[0]->toString());
     }
 
     public function test3が呼ばれて、これまでのfizzbuzzの結果がファイルに保存される()
@@ -72,7 +72,7 @@ class MenuTest extends Test_Base
         $menu = new Menu(NULL, NULL,$repository);
         $menu->select('3');
 
-        $questions = $repository->read();
+        $questions = $repository->persistent_all();
 
         $this->assertEquals([$fizz->toString(), $buzz->toString()], [$questions[0]->toString(), $questions[1]->toString()]);
     }

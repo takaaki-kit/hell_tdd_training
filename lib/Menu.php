@@ -45,19 +45,19 @@ class Menu
 
     private function show_history()
     {
-        foreach($this->repository->all() as $fizzbuzz){
+        foreach($this->repository->temporary_all() as $fizzbuzz){
             $this->out->puts($fizzbuzz->toString());
         }
     }
 
     private function save_history()
     {
-        $this->repository->write();
+        $this->repository->save();
     }
 
     private function show_file()
     {
-        foreach($this->repository->read() as $fizzbuzz){
+        foreach($this->repository->persistent_all() as $fizzbuzz){
             $this->out->puts($fizzbuzz->toString());
         }
     }

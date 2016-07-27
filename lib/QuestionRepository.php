@@ -14,12 +14,12 @@ class QuestionRepository
         $this->questions[] = $fizzbuzz;
     }
 
-    public function all()
+    public function temporary_all()
     {
         return $this->questions;
     }
 
-    public function write()
+    public function save()
     {
         $fp = fopen($this->filepath, "a");
         foreach($this->questions as $answer){
@@ -28,7 +28,7 @@ class QuestionRepository
         fclose($fp);
     }
 
-    public function read()
+    public function persistent_all()
     {
         $body = [];
         if(!file_exists($this->filepath)){

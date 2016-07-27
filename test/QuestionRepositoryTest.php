@@ -13,9 +13,9 @@ class QuestionRepositoryTest extends Test_Base
         $buzz = new Question(5);
         $repository->register($fizz);
         $repository->register($buzz);
-        $repository->write();
+        $repository->save();
 
-        $questions = $repository->read();
+        $questions = $repository->persistent_all();
         $this->assertEquals([$fizz->toString(), $buzz->toString()], [$questions[0]->toString(), $questions[1]->toString()]);
     }
 
@@ -23,6 +23,6 @@ class QuestionRepositoryTest extends Test_Base
     {
         $repository = new QuestionRepository(self::FILE_PATH);
 
-        $this->assertEquals([], $repository->read());
+        $this->assertEquals([], $repository->persistent_all());
     }
 }
