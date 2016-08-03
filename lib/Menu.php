@@ -6,6 +6,7 @@ require_once('Game.php');
 require_once('ShowTemporaryHistory.php');
 require_once('SaveHistory.php');
 require_once('ShowPersistentHistory.php');
+require_once('nothingToDo.php');
 
 class Menu
 {
@@ -18,20 +19,27 @@ class Menu
 
     public function select($mode)
     {
+        $this->create_command($mode)->run();
+    }
+
+    private function create_command($mode)
+    {
         if($mode === '1'){
-            (new Game($this->out, $this->in, $this->repository))->run();
+            return (new Game($this->out, $this->in, $this->repository));
         }
 
         if($mode === '2'){
-            (new ShowTemporaryHistory($this->out, $this->repository))->run();
+            return (new ShowTemporaryHistory($this->out, $this->repository));
         }
 
         if($mode === '3'){
-            (new SaveHistory($this->repository))->run();
+            return (new SaveHistory($this->repository));
         }
 
         if($mode === '4'){
-            (new ShowPersistentHistory($this->out, $this->repository))->run();
+            return (new ShowPersistentHistory($this->out, $this->repository));
         }
+
+        return new nothingToDo();
     }
 }
