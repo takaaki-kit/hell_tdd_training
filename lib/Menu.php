@@ -2,6 +2,10 @@
 
 require_once('Question.php');
 require_once('IntegerValidator.php');
+require_once('Game.php');
+require_once('ShowTemporaryHistory.php');
+require_once('SaveHistory.php');
+require_once('ShowPersistentHistory.php');
 
 class Menu
 {
@@ -15,50 +19,19 @@ class Menu
     public function select($mode)
     {
         if($mode === '1'){
-            $this->question_and_answer();
+            (new Game($this->out, $this->in, $this->repository))->run();
         }
 
         if($mode === '2'){
-            $this->show_history();
+            (new ShowTemporaryHistory($this->out, $this->repository))->run();
         }
 
         if($mode === '3'){
-            $this->save_history();
+            (new SaveHistory($this->repository))->run();
         }
 
         if($mode === '4'){
-            $this->show_file();
-        }
-    }
-
-    private function question_and_answer()
-    {
-        $input = $this->in->get();
-        if((new IntegerValidator($input))->isInteger()){
-            $fizzbuzz = new Question(intval($input));
-            $this->out->puts($fizzbuzz->start());
-            $this->repository->register($fizzbuzz);
-        }else{
-            $this->out->puts('エラー');
-        }
-    }
-
-    private function show_history()
-    {
-        foreach($this->repository->temporary_all() as $fizzbuzz){
-            $this->out->puts($fizzbuzz->toString());
-        }
-    }
-
-    private function save_history()
-    {
-        $this->repository->save();
-    }
-
-    private function show_file()
-    {
-        foreach($this->repository->persistent_all() as $fizzbuzz){
-            $this->out->puts($fizzbuzz->toString());
+            (new ShowPersistentHistory($this->out, $this->repository))->run();
         }
     }
 }
